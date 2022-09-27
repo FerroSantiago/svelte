@@ -10,7 +10,7 @@
 
     $: if (log == true) {
         fetch(
-            `sexo.com`
+            `urlDeEjemplo.com/api/auth?usuario=${user.trim()}&contraseña=${password.trim()}`
         )
             .then((res) => res.json())
             .then((json) => {
@@ -22,12 +22,18 @@
     }
     function logear() {
         log = true;
+        
     }
 </script>
 
 <input placeholder="Usuario" {user} on:input={handleInput} />
 <br>
-<input placeholder="Contraseña" {pass} on:input={handleInput} />
+<input type="password" placeholder="Contraseña" {pass} on:input={handleInput} />
 <br>
-<button on:click={logear}> Buscar </button>
+<a href="http://127.0.0.1:5173/api/carreras">
+    <button on:click={logear}> Log In </button>
+</a>
 
+
+    
+    
