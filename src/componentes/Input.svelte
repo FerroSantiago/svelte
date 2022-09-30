@@ -52,6 +52,9 @@
             <input class="form-control" type="password" placeholder="Contraseña" bind:value={pass} on:input={handleInput} />
             <br>
             <button class="btn btn-outline-success" on:click={logear}> Log In </button>
+            <a class="btn btn-outline-success" href="/">
+                Volver
+            </a>
         </div>
       </div>
     </div>
