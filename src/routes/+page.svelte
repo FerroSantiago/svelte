@@ -6,6 +6,10 @@
 <h1>Bienvenidos al Sistema de carreras</h1>
 
 <a class="btn btn-outline-success" href="/api/auth">
-	Ir A Login
+	Administrador
 </a>
+<a class="btn btn-outline-success" href="/api/carreras">
+	Carreras
+</a>
+
 
