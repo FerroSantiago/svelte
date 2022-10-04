@@ -8,9 +8,11 @@
         if(user != "" && pass != ""){
             fetch(
                 `http://localhost:4000/api/login/signin`,
-                {method:'POST',
-                 body: {usuario: user,
-                       contraseña: pass}
+                { 
+                  method:'POST',
+                  headers: {'Content-Type': 'application/json'},
+                  body: JSON.stringify({ usuario: user,
+                      contraseña: pass})
                 })
                 .then(res => res.json())
                 .then(apiResponse => {
