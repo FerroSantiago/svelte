@@ -1,6 +1,5 @@
 <script>
 	let response = undefined
-	let bot = false;
 
 	function obtenerCarreras(){
 		fetch('http://localhost:4000/api/carreras',

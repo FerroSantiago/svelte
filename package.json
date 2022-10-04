@@ -19,6 +19,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"cors": "^2.8.5"
+		"cors": "^2.8.5",
+		"svelte-routing": "^1.6.0"
 	}
 }
