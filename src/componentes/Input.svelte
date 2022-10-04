@@ -20,7 +20,7 @@
                 .then(apiResponse => {
                   console.log(apiResponse)
                   localStorage.setItem("token", apiResponse.token);
-                  if(apiResponse.token) {fail = undefined; navigate("http://127.0.0.1:5173/api/carreras")} 
+                  if(apiResponse.token) {fail = undefined; navigate("http://127.0.0.1:5173/gestion/carreras")} 
                   else{fail = apiResponse
                     JSON.stringify(fail)}
                 })
