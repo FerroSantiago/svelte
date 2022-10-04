@@ -1,8 +1,10 @@
 <script>
     import { each } from "svelte/internal";
+    import { navigate } from 'svelte-routing';
 
     let user = "";
     let pass = "";
+    let fail = undefined;
 
     function logear() {
         if(user != "" && pass != ""){
@@ -16,11 +18,12 @@
                 })
                 .then(res => res.json())
                 .then(apiResponse => {
-                localStorage.setItem("token", apiResponse.token);
-
-                    //todo: validar respuesta antes de redirigir
-                    //windos.location.replace("http://127.0.0.1:5173/api/carreras");
-                });
+                  console.log(apiResponse)
+                  localStorage.setItem("token", apiResponse.token);
+                  if(apiResponse.token) {fail = undefined; navigate("http://127.0.0.1:5173/api/carreras")} 
+                  else{fail = apiResponse
+                    JSON.stringify(fail)}
+                })
         }else{
             res.sendStatus(409)
         }
@@ -45,6 +48,11 @@
                 Volver
             </a>
         </div>
+        {#if fail}
+                  <h3>
+                      <strong>{fail.message}</strong>
+                  </h3> 
+        {/if}
       </div>
     </div>
   </div>
