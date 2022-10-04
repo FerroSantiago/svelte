@@ -15,7 +15,11 @@
 	}
 </script>
 
-<h1>Prueba de carreras</h1>
+<body>
+	<title>ListaCarreras</title>
+</body>
+<br>
+<h1>Lista</h1>
 
 <button class="btn btn-outline-success" on:click={obtenerCarreras}> Carreras </button>
 
