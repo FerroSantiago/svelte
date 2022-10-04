@@ -36,9 +36,9 @@
       </div>
       <div class="col">
         <div class="mb-3">
-            <input class="form-control" placeholder="Usuario" bind:value={user} />
+            <input style="width: auto" class="form-control" placeholder="Usuario" bind:value={user} />
             <br>
-            <input class="form-control" type="password" placeholder="Contraseña" bind:value={pass} />
+            <input style="width: auto" class="form-control" type="password" placeholder="Contraseña" bind:value={pass} />
             <br>
             <button class="btn btn-outline-success" on:click={logear}> Log In </button>
             <a class="btn btn-outline-success" href="/">
@@ -48,7 +48,3 @@
       </div>
     </div>
   </div>
-
-    
-    
-    
