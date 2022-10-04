@@ -3,7 +3,9 @@
 
 	function obtenerCarreras(){
 		fetch('http://localhost:4000/api/carreras',
-        {method: 'GET'})
+        {method: 'GET',
+		headers: {'authorization': `Bearer ${localStorage.getItem("token")}`}
+		})
     	.then(res => res.json())
 		.then(apiResponse =>{
 			response = apiResponse || []

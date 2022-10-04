@@ -16,7 +16,7 @@
                 })
                 .then(res => res.json())
                 .then(apiResponse => {
-			          console.log(apiResponse)
+                localStorage.setItem("token", apiResponse.token);
 
                     //todo: validar respuesta antes de redirigir
                     //windos.location.replace("http://127.0.0.1:5173/api/carreras");
