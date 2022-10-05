@@ -1,7 +1,8 @@
 <script>
 	import Controls from "../../../componentes/Tiempos/Controls.svelte";
-import Cronometro from "../../../componentes/Tiempos/Cronometro.svelte"
+	import Cronometro from "../../../componentes/Tiempos/Cronometro.svelte"
 	let response = undefined
+	let responseEquipos = undefined
 
 	function obtenerCarreras(){
 		fetch('http://localhost:4000/api/carreras',
@@ -15,28 +16,59 @@ import Cronometro from "../../../componentes/Tiempos/Cronometro.svelte"
 			console.log(apiResponse)
 		})
 	}
+
+	function marcarTiempos(carrera){
+		fetch(`http://localhost:4000/api/carreraEquipos/${carrera}`,
+        {method: 'GET',
+		headers: {'authorization': `Bearer ${localStorage.getItem("token")}`}
+		})
+    	.then(res => res.json())
+		.then(apiResponse =>{
+			responseEquipos = apiResponse || []
+			JSON.stringify(responseEquipos)
+			console.log(apiResponse)
+		})
+	}
 </script>
 
-<body>
+<head>
 	<title>ListaCarreras</title>
-</body>
-<br>
-<h1>Lista de carreras para gestionar</h1>
+</head>
 
-<button class="btn btn-outline-success" on:click={obtenerCarreras}> Carreras </button>
+<body>
+	<br>
+	<h1>Lista de carreras para gestionar</h1>
 
-<a class="btn btn-outline-success" href="/">
+	<button class="btn btn-outline-success w-auto" on:click={obtenerCarreras}> Carreras </button>
+
+	<a class="btn btn-outline-success w-auto" href="/">
 	Volver
-</a>
+	</a>
 
-{#if response && response.length > 0}
-	{#each response as carreras}
-    	<div>
-			<br>
-			<button class="btn btn-outline-success"> Carrera numero: {carreras.idCarrera} "{carreras.nombre}" </button>
-			<br>
-    	</div>
-	{/each}
-{/if}
+	{#if response && response.length > 0}
+		{#each response as carreras}
+    		<div>
+				<br>
+				<button class="btn btn-outline-success" on:click={marcarTiempos(carreras.idCarrera)}> Carrera numero: {carreras.idCarrera} "{carreras.nombre}" </button>
+				<br>
+    		</div>
+		{/each}
+	{/if}
 
-<Cronometro></Cronometro>
+	{#if responseEquipos && responseEquipos.length > 0}
+		<h1>Equipos de la carrera:</h1>
+		<Cronometro></Cronometro>
+		{#each responseEquipos as Equipos}
+			<div>
+				<br>
+				<h3>Equipo: {Equipos.idEquipo} </h3>
+				<br>
+			</div>
+		{/each}
+	{/if}
+</body>
+
+
+
+
+
