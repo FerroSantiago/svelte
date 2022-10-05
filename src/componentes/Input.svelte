@@ -29,28 +29,74 @@
 
 </script>
 
-<div class="container text-center">
-    <br>
-    <div class="row">
-      <div class="col">
-        <h1>Ingresar usuario y contraseña</h1>
+<body>
+
+  <div class="login">
+
+    <h1 class="text-center">Bienvenido Adiministrador!</h1>
+
+    <form>
+      
+      <div class="form-group">
+      <label class="form-label" for="usuario">Usuario</label>
+      <input class="form-control" bind:value={user} />
       </div>
-      <div class="col">
-        <div class="mb-3">
-            <input style="width: auto" class="form-control" placeholder="Usuario" bind:value={user} />
-            <br>
-            <input style="width: auto" class="form-control" type="password" placeholder="Contraseña" bind:value={pass} />
-            <br>
-            <button class="btn btn-outline-success" on:click={logear}> Log In </button>
-            <a class="btn btn-outline-success" href="/">
-                Volver
-            </a>
-        </div>
-        {#if fail}
-                  <h3>
-                      <strong>{fail.message}</strong>
-                  </h3> 
-        {/if}
+
+      <div class="form-group">
+        <label class="form-label" for="password">Contraseña</label>
+        <input class="form-control" type="password" bind:value={pass} />
       </div>
-    </div>
+
+      <button class="btn btn-primary w-100" on:click={logear}> Log In </button>
+
+      <a class="btn btn-outline-primary w-100" href="/">
+        Volver
+      </a>
+    </form>
+
+    {#if fail}
+      <h3>
+        <strong>{fail.message}</strong>
+      </h3> 
+    {/if}
+    
   </div>
+
+</body>
+
+<style>
+	*{
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
+  }
+  
+  body{
+	  height: 100vh;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  background: #e8f2fc;
+  }
+  
+  .login{
+	  width: 330px;
+	  height: min-content;
+	  padding: 20px;
+	  border-radius: 12px;
+	  background: rgb(196, 197, 219);
+  }
+  
+  .login h1{
+	  font-size: 36px;
+	  margin-bottom: 25px;
+  }
+  
+  .login form{
+	  font-size: 20px;
+  }
+  
+  .login form .form-group{
+	  margin-bottom: 12px;
+  }
+  </style>
