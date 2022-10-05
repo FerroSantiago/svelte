@@ -1,5 +1,4 @@
 <script>
-
 </script>
 
 <body>
@@ -12,9 +11,6 @@
 
 <a class="btn btn-outline-success" href="/gestion/auth">
 	Login
-</a>
-<a class="btn btn-outline-success" href="/gestion/carreras">
-	Carreras
 </a>
 </div>
 

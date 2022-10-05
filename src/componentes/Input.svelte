@@ -1,6 +1,4 @@
 <script>
-    import { each } from "svelte/internal";
-    import { navigate } from 'svelte-routing';
 
     let user = "";
     let pass = "";
@@ -20,7 +18,7 @@
                 .then(apiResponse => {
                   console.log(apiResponse)
                   localStorage.setItem("token", apiResponse.token);
-                  if(apiResponse.token) {fail = undefined; navigate("http://127.0.0.1:5173/gestion/carreras")} 
+                  if(apiResponse.token) {fail = undefined; location.href = "http://127.0.0.1:5173/gestion/carreras"} 
                   else{fail = apiResponse
                     JSON.stringify(fail)}
                 })
@@ -35,7 +33,7 @@
     <br>
     <div class="row">
       <div class="col">
-        <h1>Bienvenido al sistema de carreras </h1>
+        <h1>Ingresar usuario y contraseña</h1>
       </div>
       <div class="col">
         <div class="mb-3">
