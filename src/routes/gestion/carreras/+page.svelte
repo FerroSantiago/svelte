@@ -37,25 +37,27 @@
 <body>
 	<br>
 	<h1>Lista de carreras para gestionar</h1>
-
-	<button class="btn btn-outline-success w-auto" on:click={obtenerCarreras}> Carreras </button>
-
-	<a class="btn btn-outline-success w-auto" href="/">
-	Volver
-	</a>
-
-	{#if response && response.length > 0}
-		{#each response as carreras}
-    		<div>
-				<br>
-				<button class="btn btn-outline-success" on:click={marcarTiempos(carreras.idCarrera)}> Carrera numero: {carreras.idCarrera} "{carreras.nombre}" </button>
-				<br>
-    		</div>
-		{/each}
-	{/if}
+	<div class="botonera">
+		
+		<button class="btn btn-primary w-100" on:click={obtenerCarreras}> Obtener</button>
+		<a class="btn btn-outline-primary w-100" href="/">
+			Volver
+		</a>
+	</div>
+	
+	<div class="botonera">
+		{#if response && response.length > 0}
+			{#each response as carreras}
+				<div>
+					<br>
+					<button class="btn btn-primary w-100" on:click={marcarTiempos(carreras.idCarrera)}> Carrera numero: {carreras.idCarrera} "{carreras.nombre}" </button>
+				</div>
+			{/each}
+		{/if}
+	</div>
 
 	{#if responseEquipos && responseEquipos.length > 0}
-		<h1>Equipos de la carrera:</h1>
+		<h2>Equipos de la carrera:</h2>
 		<Cronometro></Cronometro>
 		{#each responseEquipos as Equipos}
 			<div>
@@ -65,7 +67,28 @@
 			</div>
 		{/each}
 	{/if}
+	
 </body>
+
+<style>
+	*{
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
+  	}	
+	body{
+	  display: flex;
+	  align-items: center;
+	  justify-content:flex-start;
+	  background: #e8f2fc;
+  	}
+	.botonera{
+		width: 300px;
+		align-items: center;
+	  	justify-content: center;
+	}
+
+</style>
 
 
 
