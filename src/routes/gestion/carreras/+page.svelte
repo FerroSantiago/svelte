@@ -1,5 +1,4 @@
 <script>
-	import Controls from "../../../componentes/Tiempos/Controls.svelte";
 	import Cronometro from "../../../componentes/Tiempos/Cronometro.svelte"
 	let response = undefined
 	let responseEquipos = undefined

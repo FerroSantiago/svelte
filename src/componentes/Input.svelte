@@ -19,7 +19,10 @@
                   console.log(apiResponse)
                   localStorage.setItem("token", apiResponse.token);
                   if(apiResponse.token) {fail = undefined; location.href = "http://127.0.0.1:5173/gestion/carreras"} 
-                  else{fail = apiResponse
+                  else{
+                    fail = apiResponse
+                    localStorage.setItem("token", undefined)
+                    console.log(localStorage)
                     JSON.stringify(fail)}
                 })
         }else{
@@ -35,8 +38,7 @@
 
     <h1 class="text-center">Bienvenido Adiministrador!</h1>
 
-    <form>
-      
+  
       <div class="form-group">
       <label class="form-label" for="usuario">Usuario</label>
       <input class="form-control" bind:value={user} />
@@ -46,22 +48,20 @@
         <label class="form-label" for="password">Contraseña</label>
         <input class="form-control" type="password" bind:value={pass} />
       </div>
-
-      <button class="btn btn-primary w-100" on:click={logear}> Log In </button>
+      <br>
+      <button type="submit" class="btn btn-primary w-100" on:click={logear}> Log In </button>
 
       <a class="btn btn-outline-primary w-100" href="/">
         Volver
       </a>
-    </form>
-
-    {#if fail}
-      <h3>
-        <strong>{fail.message}</strong>
-      </h3> 
-    {/if}
-    
+      <div>
+        {#if fail}
+          <h3>
+            <strong>{fail.message}</strong>
+          </h3> 
+        {/if}
+      </div>
   </div>
-
 </body>
 
 <style>
@@ -92,11 +92,5 @@
 	  margin-bottom: 25px;
   }
   
-  .login form{
-	  font-size: 20px;
-  }
   
-  .login form .form-group{
-	  margin-bottom: 12px;
-  }
   </style>
