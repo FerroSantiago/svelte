@@ -99,7 +99,7 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: left;
-			min-height: 100vh;
+			min-height: 50vh;
 	}
 	
 	/* display the content of the .stopwatch container in a column */
@@ -111,16 +111,15 @@
 	}
 	:global(.stopwatch > * + *) {
 			margin-top: 0.75rem;
-			padding-left: 500px;
-			padding-right: 500px;
+			padding-left: 250px;
+			padding-right: 250px;
 			text-align: center;
 	}
 	:global(.reloj){
 		text-align: center;
+		line-height: normal;
 	}
-	:global(.scroll){
-		overflow-y: scroll;
-	}
+
 	
 	
 	/* for devices supporting css grid */
@@ -168,9 +167,6 @@
 <div class="scroll">
 	<div class="stopwatch">
 		<Laps {laps} />
-		<!-- following the events disaptched from the controls component call the start/pause/stop/lap function
-		pass the necessary booleans to display the correct button(s)
-		-->
 		<Controls on:start={start} on:stop={stop} on:lap={lap} {subscription} {lapsed} />
 	</div>
 </div>

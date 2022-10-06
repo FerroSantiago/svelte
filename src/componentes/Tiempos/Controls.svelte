@@ -12,9 +12,6 @@
         contador = 0;
         dispatch("stop");
     }
-    function pause() {
-        dispatch("pause");
-    }
 
     function lap() {
         contador = contador + 1;
@@ -22,14 +19,13 @@
    
     // consider the booleans passed down from App.svelte
     export let subscription;
-    export let lapsed;
 </script>
 <style>
     /* display the button(s) in a row */
     div {
         display: flex;
         border: 1px solid hsl(0, 0%, 25%);
-        border-radius: 200px;
+        border-radius: 100px;
     }
     div button {
         font-size: 1.0rem;
@@ -37,7 +33,7 @@
         font-family: inherit;
         padding: 0.6rem;
         flex-grow: 1;
-        width: 200px;
+        width: 100px;
         border: none;
         background: none;
         border-radius: inherit;
@@ -58,26 +54,12 @@
         background: hsla(140, 100%, 22%, 0.616);
     }
 
-    .team:focus {
-        outline-color: hsl(0, 0%, 0%);
-    }
-    .team:hover{
-        background-color: rgb(0, 161, 40);
-    }
-
     .reset:focus{
         outline-color: rgb(0, 0, 0);
     }
     .reset:hover{
         background-color: rgba(155, 0, 0, 0.623);
     }
-
-    .contador{
-        border: none;
-        padding-left: 50%;
-    }
-
-
 
 </style>
 
@@ -87,25 +69,19 @@ subscription -> Lap & pause
         otherwiose -> Start
 -->
 
-<div class="contador">
-    <h2>
-        {contador}
-   </h2>     
-</div>
-<div class="controls">
+
     {#if subscription}
-    <button class="team" on:click="{lap}">Equipo x</button>
-    {:else if lapsed}
-
-    <button on:click="{start}">Continue</button>
+    <div class="reset">
+        <button on:click="{stop}">Terminar carrera</button>
+    </div>
     {:else}
+    <div class="controls">
     <button on:click="{start}">Iniciar carrera</button>
+    </div>
     {/if}
-</div>
 
-<div class="reset">
-    <button on:click="{stop}">Terminar carrera</button>
-</div>
+
+
 
 
 
